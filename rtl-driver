@@ -1,0 +1,8 @@
+fetch http://pkg.freebsd.org/FreeBSD:14:amd64/release_2/All/realtek-re-kmod-1100.00_1.pkg
+
+tar zxf realtek-re-kmod1100.00_1.pkg /boot/modules/if_re.ko
+mv boot/modules/if_re.ko /boot/modules/
+
+# vi /boot/loader.conf
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
