@@ -1,0 +1,82 @@
+root@barokah:~ # cat /etc/rc.local 
+#!/bin/sh
+
+# Set MTU base interfaces
+ifconfig mce0 mtu 9000
+ifconfig mce1 mtu 9000
+
+# -------------------------
+# mce0 VLANs
+# -------------------------
+ifconfig mce0.111 destroy 2>/dev/null
+ifconfig mce0.111 create vlan 111 vlandev mce0 mtu 9000 
+ifconfig mce0.111 inet 123.108.10.185/21
+ifconfig mce0.111 inet6 2001:7fa:2:5::2c9/64
+
+ifconfig mce0.600 destroy 2>/dev/null
+ifconfig mce0.600 create vlan 600 vlandev mce0 mtu 9000 
+ifconfig mce0.600 inet 202.72.198.126/30
+ifconfig mce0.600 inet6 2404:fd00:16::15/127
+
+ifconfig mce0.601 destroy 2>/dev/null
+ifconfig mce0.601 create vlan 601 vlandev mce0 mtu 9000 
+ifconfig mce0.601 inet 43.252.146.102/23
+
+ifconfig mce0.602 destroy 2>/dev/null
+ifconfig mce0.602 create vlan 602 vlandev mce0 mtu 9000 
+ifconfig mce0.602 inet 119.11.185.229/23
+
+ifconfig mce0.606 destroy 2>/dev/null
+ifconfig mce0.606 create vlan 606 vlandev mce0 mtu 9000 
+ifconfig mce0.606 inet 218.100.41.203/24
+
+ifconfig mce0.607 destroy 2>/dev/null
+ifconfig mce0.607 create vlan 607 vlandev mce0 mtu 9000 
+ifconfig mce0.607 inet 43.254.82.42/24
+ifconfig mce0.607 inet6 2401:91e0:31::142:385:1/64
+
+ifconfig mce0.608 destroy 2>/dev/null
+ifconfig mce0.608 create vlan 608 vlandev mce0 mtu 9000 
+ifconfig mce0.608 inet 103.61.232.122/24
+ifconfig mce0.608 inet6 2001:df1:d440:1::122/64
+
+ifconfig mce0.610 destroy 2>/dev/null
+ifconfig mce0.610 create vlan 610 vlandev mce0 mtu 9000 
+ifconfig mce0.610 inet 10.9.64.50/29
+
+ifconfig mce0.201 destroy 2>/dev/null
+ifconfig mce0.201 create vlan 201 vlandev mce0 mtu 9000 
+ifconfig mce0.201 inet 103.159.71.49/25
+ifconfig mce0.201 inet6 2001:df5:7880:0:2:2c31:0:1/64
+
+ifconfig mce0.202 destroy 2>/dev/null
+ifconfig mce0.202 create vlan 202 vlandev mce0 mtu 9000 
+ifconfig mce0.202 inet 103.162.254.125/24
+ifconfig mce0.202 inet6 2001:df6:480:0:2:2c31:0:1/64
+
+ifconfig mce0.2910 destroy 2>/dev/null
+ifconfig mce0.2910 create vlan 2910 vlandev mce0 mtu 9000 
+ifconfig mce0.2910 inet 10.11.245.6/30
+
+# -------------------------
+# mce1 VLANs
+# -------------------------
+ifconfig mce1.150 destroy 2>/dev/null
+ifconfig mce1.150 create vlan 150 vlandev mce1 mtu 9000 
+ifconfig mce1.150 inet 103.172.43.13/30
+ifconfig mce1.150 inet6 2001:df2:ad40::100/127
+
+ifconfig mce1.769 destroy 2>/dev/null
+ifconfig mce1.769 create vlan 769 vlandev mce1 mtu 9000 
+ifconfig mce1.769 inet 103.172.43.5/30
+ifconfig mce1.769 inet6 2001:df2:ad40::102/127
+
+ifconfig mce1.2083 destroy 2>/dev/null
+ifconfig mce1.2083 create vlan 2083 vlandev mce1 mtu 9000 
+ifconfig mce1.2083 inet 103.172.43.9/30
+
+# Aliases 2083
+ifconfig mce1.2083 inet alias 103.172.43.169/30 mtu 9000
+ifconfig mce1.2083 inet alias 103.172.43.173/30 mtu 9000
+ifconfig mce1.2083 inet alias 103.172.43.181/30 mtu 9000
+root@barokah:~ # 
